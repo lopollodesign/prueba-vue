@@ -1004,9 +1004,8 @@ ul {
 }
 
 #hero {
-    background-image: url(../img/hero.jpg);
-    height: 350px;
-    background-size: cover;
+    padding: 50px 0;
+    background-color: #333;
 }
 
 #encabezado {
@@ -1042,7 +1041,6 @@ ul {
 }
 
 .contenido-hero {
-    margin-top: 80px;
     color: white;
 }
 

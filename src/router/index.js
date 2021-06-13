@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Carrito from '../views/Carrito.vue'
 
 const routes = [
   {
     path: '/Home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Carrito',
+    name: 'Carrito',
+    component: Carrito
   },
   {
     path: '/about',
