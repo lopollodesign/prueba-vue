@@ -57,11 +57,9 @@
 
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <CourseCard title="Titulo 1" :id="1" :price="200" :finalprice="15" v-on:add-this="addToList()"/>
-
-    <CourseCard title="Titulo 2" :id="2" :price="200" :finalprice="15"/>
-
-    <CourseCard title="Titulo 3" :id="3" :price="200" :finalprice="15"/>
+    <CourseCard title="Titulo" :id="1" :price="200" :finalprice="15" v-on:add-this="addToList"/>
+    <CourseCard title="Titulo" :id="2" :price="200" :finalprice="15" v-on:add-this="addToList"/>
+    <CourseCard title="Titulo" :id="3" :price="200" :finalprice="15" v-on:add-this="addToList"/>
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -98,8 +96,8 @@ export default {
     ShoppingList
   },
   methods: {
-    addToList() {
-      console.log('hello')
+    addToList(text, id) {
+      console.log('Has añadido el curso \'' + text + ' ' + id+ '\' ')
     },
   }
 }

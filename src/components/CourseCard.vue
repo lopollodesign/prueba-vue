@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     addCourse() {
-      this.$emit('add-this');
+      this.$emit('add-this', this.title, this.id);
     },
   }
 }
