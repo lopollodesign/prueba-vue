@@ -73,7 +73,7 @@
 
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <CursesList/>
+    <CoursesList/>
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -100,12 +100,12 @@
   </div>
 </template>
 <script>
-import CursesList from '@/components/CursesList.vue'
+import CoursesList from '@/components/CoursesList.vue'
 
 export default {
   name: 'Home',
   components: {
-    CursesList
+    CoursesList
   }
 }
 </script>

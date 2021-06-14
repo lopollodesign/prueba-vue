@@ -1,18 +1,18 @@
 <template>
   <div id="lista-cursos" class="container">
     <div class="lista-cursos_list">
-      <CurseCard v-for="curse in list" :key="curse.id" :title="curse.name"/>
+      <CourseCard v-for="course in list" :key="course.id" :title="course.name"/>
     </div>
   </div>
 </template>
 
 <script>
-import CurseCard from '@/components/CurseCard.vue'
+import CourseCard from '@/components/CourseCard.vue'
 
 export default {
   name: 'CursesList',
   components: {
-    CurseCard
+    CourseCard
   },
   data() {
     return {
