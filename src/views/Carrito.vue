@@ -10,7 +10,7 @@
             <ul>
               <li class="submenu">
                 <img src="../assets/cart.png" id="img-carrito">
-                <ShoppingList :list="this.addedList"/>
+                <ShoppingList :list="this.addedList" @deleteCourse="deleteToList"/>
               </li>
             </ul>
           </div>
@@ -118,6 +118,9 @@ export default {
     addToList(text, id) {
       this.addedList.push({courseID: id, name: text})
     },
+    deleteToList(id) {
+      this.addedList.filter( courseID => id !== courseID)
+    }
   }
 }
 </script>

@@ -18,13 +18,13 @@
           {{ item.name }}
         </td>
         <td>
-          $
+          $ {{ item.courseID }}
         </td>
         <td>
           1
         </td>
         <td>
-          <a href="#" class="borrar-curso">X</a>
+          <a href="#" @click="deleteCourse(item.courseID)" class="borrar-curso">X</a>
         </td>
       </tr>
       </tbody>
@@ -40,5 +40,10 @@ export default {
   props: {
       list: Array
   },
+  methods: {
+    deleteCourse(id) {
+      this.$emit('deleteCourse', id);
+    },
+  }
 }
 </script>
