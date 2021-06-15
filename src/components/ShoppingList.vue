@@ -11,7 +11,9 @@
         <th></th>
       </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {{ this.list }}
+      </tbody>
     </table>
 
     <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
@@ -21,5 +23,8 @@
 <script>
 export default {
   name: 'ShoppingList',
+  props: {
+      list: Array
+  },
 }
 </script>
