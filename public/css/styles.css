@@ -997,6 +997,11 @@ header {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    transition-duration: .2s;
+}
+.borrar-curso:hover {
+    background-color: #c40707;
+    color: white;
 }
 
 ul {
@@ -1168,4 +1173,3 @@ ul {
     margin-bottom: 10px;
     text-decoration: none;
 }
-/*# sourceMappingURL=styles.css.map */

@@ -12,7 +12,21 @@
       </tr>
       </thead>
       <tbody>
-        {{ this.list }}
+      <tr :v-if="list.length > 0" v-for="item in list" :key="item.id">
+        <td>img</td>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>
+          $
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          <a href="#" class="borrar-curso">X</a>
+        </td>
+      </tr>
       </tbody>
     </table>
 
