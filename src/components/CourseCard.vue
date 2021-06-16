@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img src="../assets/curso1.jpg" class="imagen-curso u-full-width" :alt="title">
+    <img :src="imgSrc" class="imagen-curso u-full-width" :alt="title">
     <div class="info-card">
       <h4>{{ title }}</h4>
       <p>Juan Pedro</p>
@@ -21,6 +21,7 @@ export default {
   name: 'CurseCard',
   props: {
     id: Number,
+    imgSrc: String,
     title: String,
     img: String,
     range: Number,

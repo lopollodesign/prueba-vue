@@ -18,14 +18,13 @@
         </div>
       </div>
     </header>
-
-    <div v-show="false" id="hero">
+    <div id="hero">
       <div class="container">
         <div class="row">
           <div class="six columns">
             <div class="contenido-hero">
               <h2>Aprende algo nuevo</h2>
-              <p>Todos los cursos a $15</p>
+              <p>Encuentra tu curso ideal</p>
               <form action="#" id="busqueda" method="post" class="formulario">
                 <input class="u-full-width" type="text" placeholder="¿Que te gustaría Aprender?" id="buscador">
                 <input type="submit" id="submit-buscador" class="submit-buscador">
@@ -58,7 +57,7 @@
 
     <div id="lista-cursos" class="container">
       <div class="lista-cursos_list">
-        <CourseCard v-for="course in list" :key="course.id" :title="course.name" :id="course.id" :price="course.price" :finalprice="course.finalprice" @addCourse="addToList"/>
+        <CourseCard v-for="course in list" :key="course.id" :imgSrc="course.imgSrc" :title="course.name" :id="course.id" :price="course.price" :finalprice="course.finalprice" @addCourse="addToList"/>
       </div>
     </div>
 
@@ -99,18 +98,18 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15},
-        { id: 2, name:"Curso de Comida Vegetariana", price: 200, finalprice: 15},
-        { id: 3, name:"Guitarra para Principiantes", price: 200, finalprice: 15},
-        { id: 4, name:"Huerto en tu casa", price: 200, finalprice: 15},
-        { id: 5, name:"Decoración con productos de tu hogar", price: 200, finalprice: 15},
-        { id: 6, name:"Diseño Web para Principiantes", price: 200, finalprice: 15},
-        { id: 7, name:"Comida Mexicana para principiantes", price: 200, finalprice: 15},
-        { id: 8, name:"Estudio Musical en tu casa", price: 200, finalprice: 15},
-        { id: 9, name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15},
-        { id: 10, name:"Prepara galletas caseras", price: 200, finalprice: 15},
-        { id: 11, name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
-        { id: 12, name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
+        { id: 1, imgSrc: "@/assets/curso1.jpg", name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15},
+        { id: 2, imgSrc: "@/assets/curso1.jpg", name:"Curso de Comida Vegetariana", price: 200, finalprice: 15},
+        { id: 3, imgSrc: "@/assets/curso1.jpg", name:"Guitarra para Principiantes", price: 200, finalprice: 15},
+        { id: 4, imgSrc: "@/assets/curso1.jpg", name:"Huerto en tu casa", price: 200, finalprice: 15},
+        { id: 5, imgSrc: "@/assets/curso1.jpg", name:"Decoración con productos de tu hogar", price: 200, finalprice: 15},
+        { id: 6, imgSrc: "@/assets/curso1.jpg", name:"Diseño Web para Principiantes", price: 200, finalprice: 15},
+        { id: 7, imgSrc: "@/assets/curso1.jpg", name:"Comida Mexicana para principiantes", price: 200, finalprice: 15},
+        { id: 8, imgSrc: "@/assets/curso1.jpg", name:"Estudio Musical en tu casa", price: 200, finalprice: 15},
+        { id: 9, imgSrc: "@/assets/curso1.jpg", name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15},
+        { id: 10, imgSrc: "@/assets/curso1.jpg", name:"Prepara galletas caseras", price: 200, finalprice: 15},
+        { id: 11, imgSrc: "@/assets/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
+        { id: 12, imgSrc: "@/assets/curso1.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
       ],
       addedList: []
     }
