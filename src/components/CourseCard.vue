@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img v-show="false" :src="img" class="imagen-curso u-full-width" :alt="title">
+    <img src="../assets/curso1.jpg" class="imagen-curso u-full-width" :alt="title">
     <div class="info-card">
       <h4>{{ title }}</h4>
       <p>Juan Pedro</p>

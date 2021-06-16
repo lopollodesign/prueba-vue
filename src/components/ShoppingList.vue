@@ -19,7 +19,7 @@
             {{ item.name }}
           </td>
           <td>
-            ${{ item.finalprice }}
+            ${{ item.finalprice * item.amount }}
           </td>
           <td>
             {{ item.amount }}
