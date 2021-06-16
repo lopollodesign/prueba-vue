@@ -9,7 +9,7 @@
         ${{ price }}
         <span class="u-pull-right ">${{ finalprice }}</span>
       </p>
-      <a href="#" @click="addCourse()" class="u-full-width button-primary button input agregar-carrito" :data-id="id">
+      <a href="#" @click.prevent="addCourse()" class="u-full-width button-primary button input agregar-carrito" :data-id="id">
         Agregar Al Carrito
       </a>
     </div>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     addCourse() {
-      this.$emit('addCourse', this.title, this.id);
+      this.$emit('addCourse', this.title, this.id, this.finalprice);
     },
   }
 }

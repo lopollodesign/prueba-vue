@@ -9,6 +9,7 @@
           <div class="two columns u-pull-right">
             <ul>
               <li class="submenu">
+                {{ this.addedList.length }}
                 <img src="../assets/cart.png" id="img-carrito">
                 <ShoppingList :list="this.addedList" @deleteCourse="deleteToList"/>
               </li>
@@ -115,11 +116,11 @@ export default {
     }
   },
   methods: {
-    addToList(text, id) {
-      this.addedList.push({courseID: id, name: text})
+    addToList(text, id, finalprice) {
+      this.addedList.push({id: id, name: text, finalprice: finalprice})
     },
     deleteToList(id) {
-      this.addedList.filter( courseID => id !== courseID)
+      this.addedList = this.addedList.filter(course => course.id !== id)
     }
   }
 }
