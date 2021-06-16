@@ -30,7 +30,7 @@
         </tr>
         </tbody>
       </table>
-      <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+      <a href="#" id="vaciar-carrito" @click.prevent="emptyCart" class="button u-full-width">Vaciar Carrito</a>
     </div>
     <div v-if="list.length === 0">
       No tienes nada en el carrito
@@ -47,6 +47,9 @@ export default {
   methods: {
     deleteCourse(id) {
       this.$emit('deleteCourse', id);
+    },
+    emptyCart() {
+      this.$emit('emptyCart');
     },
   }
 }

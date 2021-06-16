@@ -11,7 +11,7 @@
               <li class="submenu">
                 {{ this.addedList.length }}
                 <img src="../assets/cart.png" id="img-carrito">
-                <ShoppingList :list="this.addedList" @deleteCourse="deleteToList"/>
+                <ShoppingList :list="this.addedList" @deleteCourse="deleteToList" @emptyCart="emptyCart"/>
               </li>
             </ul>
           </div>
@@ -117,14 +117,6 @@ export default {
   },
   methods: {
     addToList(text, id, finalprice) {
-
-      const addedCourse = {
-        id: id,
-        name: text,
-        finalprice: finalprice,
-        amount: 1
-      }
-
       if (this.addedList.some(cuorse => cuorse.id === id)) {
         this.addedList = this.addedList.map(course => {
           if (course.id === id) {
@@ -132,11 +124,18 @@ export default {
             return course
           } else return course
         })
-      } else this.addedList.push(addedCourse)
-
+      } else this.addedList.push({
+        id: id,
+        name: text,
+        finalprice: finalprice,
+        amount: 1
+      })
     },
     deleteToList(id) {
       this.addedList = this.addedList.filter(course => course.id !== id)
+    },
+    emptyCart() {
+      this.addedList = []
     }
   }
 }
