@@ -22,7 +22,7 @@
             ${{ item.finalprice }}
           </td>
           <td>
-            {{ item.id }}
+            {{ item.amount }}
           </td>
           <td>
             <a href="#" @click.prevent="deleteCourse(item.id)" class="borrar-curso">X</a>

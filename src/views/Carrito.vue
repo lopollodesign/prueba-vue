@@ -117,7 +117,23 @@ export default {
   },
   methods: {
     addToList(text, id, finalprice) {
-      this.addedList.push({id: id, name: text, finalprice: finalprice})
+
+      const addedCourse = {
+        id: id,
+        name: text,
+        finalprice: finalprice,
+        amount: 1
+      }
+
+      if (this.addedList.some(cuorse => cuorse.id === id)) {
+        this.addedList = this.addedList.map(course => {
+          if (course.id === id) {
+            course.amount++
+            return course
+          } else return course
+        })
+      } else this.addedList.push(addedCourse)
+
     },
     deleteToList(id) {
       this.addedList = this.addedList.filter(course => course.id !== id)
