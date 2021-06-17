@@ -98,18 +98,18 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, imgSrc: "@/assets/curso1.jpg", name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15},
-        { id: 2, imgSrc: "@/assets/curso1.jpg", name:"Curso de Comida Vegetariana", price: 200, finalprice: 15},
-        { id: 3, imgSrc: "@/assets/curso1.jpg", name:"Guitarra para Principiantes", price: 200, finalprice: 15},
-        { id: 4, imgSrc: "@/assets/curso1.jpg", name:"Huerto en tu casa", price: 200, finalprice: 15},
-        { id: 5, imgSrc: "@/assets/curso1.jpg", name:"Decoración con productos de tu hogar", price: 200, finalprice: 15},
-        { id: 6, imgSrc: "@/assets/curso1.jpg", name:"Diseño Web para Principiantes", price: 200, finalprice: 15},
-        { id: 7, imgSrc: "@/assets/curso1.jpg", name:"Comida Mexicana para principiantes", price: 200, finalprice: 15},
-        { id: 8, imgSrc: "@/assets/curso1.jpg", name:"Estudio Musical en tu casa", price: 200, finalprice: 15},
-        { id: 9, imgSrc: "@/assets/curso1.jpg", name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15},
-        { id: 10, imgSrc: "@/assets/curso1.jpg", name:"Prepara galletas caseras", price: 200, finalprice: 15},
-        { id: 11, imgSrc: "@/assets/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
-        { id: 12, imgSrc: "@/assets/curso1.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
+        { id: 1, imgSrc: "images/curso1.jpg", name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15},
+        { id: 2, imgSrc: "images/curso2.jpg", name:"Curso de Comida Vegetariana", price: 200, finalprice: 15},
+        { id: 3, imgSrc: "images/curso3.jpg", name:"Guitarra para Principiantes", price: 200, finalprice: 15},
+        { id: 4, imgSrc: "images/curso4.jpg", name:"Huerto en tu casa", price: 200, finalprice: 15},
+        { id: 5, imgSrc: "images/curso5.jpg", name:"Decoración con productos de tu hogar", price: 200, finalprice: 15},
+        { id: 6, imgSrc: "images/curso1.jpg", name:"Diseño Web para Principiantes", price: 200, finalprice: 15},
+        { id: 7, imgSrc: "images/curso2.jpg", name:"Comida Mexicana para principiantes", price: 200, finalprice: 15},
+        { id: 8, imgSrc: "images/curso3.jpg", name:"Estudio Musical en tu casa", price: 200, finalprice: 15},
+        { id: 9, imgSrc: "images/curso4.jpg", name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15},
+        { id: 10, imgSrc: "images/curso5.jpg", name:"Prepara galletas caseras", price: 200, finalprice: 15},
+        { id: 11, imgSrc: "images/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
+        { id: 12, imgSrc: "images/curso2.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
       ],
       addedList: []
     }
