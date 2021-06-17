@@ -26,7 +26,7 @@
               <h2>Aprende algo nuevo</h2>
               <p>Encuentra tu curso ideal</p>
               <form action="#" id="busqueda" method="post" class="formulario">
-                <input class="u-full-width" type="text" placeholder="¿Que te gustaría Aprender?" id="buscador">
+                <input v-model="nameFilter" class="u-full-width" type="text" placeholder="¿Que te gustaría Aprender?" id="buscador">
                 <input type="submit" id="submit-buscador" class="submit-buscador">
               </form>
             </div>
@@ -54,10 +54,9 @@
 
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
-
     <div id="lista-cursos" class="container">
       <div class="lista-cursos_list">
-        <CourseCard v-for="course in list" :key="course.id" :imgSrc="course.imgSrc" :title="course.name" :id="course.id" :price="course.price" :finalprice="course.finalprice" @addCourse="addToList"/>
+        <CourseCard v-for="course in filteredList.length > 0 ? filteredList : list" :key="course.id" :imgSrc="course.imgSrc" :title="course.name" :id="course.id" :price="course.price" :finalprice="course.finalprice" @addCourse="addToList"/>
       </div>
     </div>
 
@@ -111,11 +110,20 @@ export default {
         { id: 11, imgSrc: "images/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
         { id: 12, imgSrc: "images/curso2.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
       ],
-      addedList: []
+      addedList: [],
+      nameFilter: '',
+    }
+  },
+  computed: {
+    filteredList () {
+      if (!this.nameFilter) {
+        return this.nameFilter
+      }
+      return this.list.filter(course => course.name.includes(this.nameFilter))
     }
   },
   methods: {
-    addToList(text, id, finalprice) {
+    addToList(text, id, finalprice, imgSrc) {
       if (this.addedList.some(cuorse => cuorse.id === id)) {
         this.addedList = this.addedList.map(course => {
           if (course.id === id) {
@@ -127,6 +135,7 @@ export default {
         id: id,
         name: text,
         finalprice: finalprice,
+        imgSrc: imgSrc,
         amount: 1
       })
     },

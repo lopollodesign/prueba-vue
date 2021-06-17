@@ -1052,6 +1052,7 @@ ul {
 .contenido-hero form {
     position: relative;
     margin-bottom: 0;
+    color: black;
 }
 
 .contenido-hero form #buscador {

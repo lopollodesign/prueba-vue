@@ -14,7 +14,9 @@
         </thead>
         <tbody>
         <tr v-for="item in list" :key="item.id">
-          <td>img</td>
+          <td>
+            <img :src="item.imgSrc" :alt="name" width="100">
+          </td>
           <td>
             {{ item.name }}
           </td>

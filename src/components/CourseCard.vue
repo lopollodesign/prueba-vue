@@ -23,14 +23,13 @@ export default {
     id: Number,
     imgSrc: String,
     title: String,
-    img: String,
     range: Number,
     price: Number,
     finalprice: Number
   },
   methods: {
     addCourse() {
-      this.$emit('addCourse', this.title, this.id, this.finalprice);
+      this.$emit('addCourse', this.title, this.id, this.finalprice, this.imgSrc);
     },
   }
 }
