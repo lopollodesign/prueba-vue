@@ -55,12 +55,7 @@
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <div id="lista-cursos" class="container">
-      <div class="lista-cursos_list">
-        <CourseCard v-for="course in filteredList.length > 0 ? filteredList : list" :key="course.id" :course="course" @addCourse="addToList"/>
-      </div>
-    </div>
-
+    <CoursesList :list="list" @addCourse="addToList"/>
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -87,13 +82,13 @@
   </div>
 </template>
 <script>
-import CourseCard from '@/components/CourseCard.vue'
+import CoursesList from '@/components/CoursesList.vue'
 import ShoppingList from '@/components/ShoppingList.vue'
 
 export default {
   name: 'Carrito',
   components: {
-    CourseCard,
+    CoursesList,
     ShoppingList
   },
   data() {
