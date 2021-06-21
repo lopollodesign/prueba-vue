@@ -54,11 +54,13 @@
 
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
+
     <div id="lista-cursos" class="container">
       <div class="lista-cursos_list">
-        <CourseCard v-for="course in filteredList.length > 0 ? filteredList : list" :key="course.id" :imgSrc="course.imgSrc" :title="course.name" :id="course.id" :price="course.price" :finalprice="course.finalprice" @addCourse="addToList"/>
+        <CourseCard v-for="course in filteredList.length > 0 ? filteredList : list" :key="course.id" :course="course" @addCourse="addToList"/>
       </div>
     </div>
+
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -129,7 +131,8 @@ export default {
           if (course.id === id) {
             course.amount++
             return course
-          } else return course
+          }
+          return course
         })
       } else this.addedList.push({
         id: id,
