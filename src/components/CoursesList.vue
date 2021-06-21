@@ -1,7 +1,7 @@
 <template>
   <div id="lista-cursos" class="container">
     <div class="lista-cursos_list">
-      <CourseCard v-for="course in list" :key="course.id" :title="course.name" v-on:add-list=""/>
+      <CourseCard v-for="course in list" :key="course.id" :title="course.name"/>
     </div>
   </div>
 </template>
