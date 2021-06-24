@@ -9,6 +9,7 @@
           <th>Price Usd</th>
           <th>Market Cap Usd</th>
           <th>Change Percent 24Hr</th>
+          <th></th>
         </thead>
         <tbody style="font-size: 14px">
           <tr v-for="coin in assets" :key="coin.id">
@@ -32,6 +33,9 @@
             <td>
               <b>{{ coin.changePercent24Hr }}</b>
             </td>
+            <td>
+              <UiButton @click="goToDetail(coin.id)">Detail</UiButton>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -43,15 +47,22 @@
 <script>
 import api from '@/api';
 import HelloWorld from '@/components/HelloWorld.vue'
+import UiButton from '@/components/UiButton.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    UiButton
   },
   data () {
     return {
       assets: []
+    }
+  },
+  methods: {
+    goToDetail(id) {
+      this.$router.push({name: 'coin', params: { id } })
     }
   },
   created() {
