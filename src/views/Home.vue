@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <div class="container">
+
+    <div v-if="!isLoading">
+      cargando
+    </div>
+
+    <div v-if="isLoading" class="container">
       <table style="width: 100%">
         <thead>
           <th></th>
@@ -57,7 +62,8 @@ export default {
   },
   data () {
     return {
-      assets: []
+      assets: [],
+      isLoading: false
     }
   },
   methods: {
@@ -66,8 +72,8 @@ export default {
     }
   },
   created() {
-    api.getAssets()
-        .then(assets => (this.assets = assets))
+    this.isLoading = true
+    api.getAssets().then(assets => (this.assets = assets))
   }
 }
 </script>
