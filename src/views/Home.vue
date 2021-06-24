@@ -19,7 +19,9 @@
               <b>#{{ coin.rank }}</b>
             </td>
             <td>
-              <b>{{ coin.name }}</b>
+              <router-link :to="{ name : 'coin', params: {id: coin.id } }">
+                <b>{{ coin.name }}</b>
+              </router-link>
             </td>
             <td>
               <b>{{ coin.priceUsd }}</b>
