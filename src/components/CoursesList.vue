@@ -1,9 +1,9 @@
 <template>
   <div id="lista-cursos" class="container">
 
-    <input type="text" v-model="guille">
+    <input type="text" v-model="nameFilter">
 
-    {{ guille }}
+    {{ nameFilter }}
 
     <div class="lista-cursos_list">
       <CourseCard v-for="course in list" :key="course.id" :course="course" v-bind="$attrs"/>
@@ -24,12 +24,12 @@ export default {
   },
   data () {
     return {
-      guille: ''
+      nameFilter: ''
     }
   },
   watch: {
-    guille() {
-      this.$emit('filtering', this.guille)
+    nameFilter() {
+      this.$emit('filtering', this.nameFilter)
     }
   }
 }
