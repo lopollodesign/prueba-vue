@@ -1,24 +1,26 @@
 <template>
   <div class="coin">
-    <div v-if="asset.id" class="container">
-      <h1>Coin detail: {{ asset.name }} ({{ asset.symbol }})</h1>
-    </div>
+    <div class="container">
+      <div v-if="asset.id" class="container">
+        <h1>Coin detail: {{ asset.name }} ({{ asset.symbol }})</h1>
+      </div>
 
-    <div>
-      precio: {{ asset.priceUsd }}
-    </div>
-    <div>
-      min: {{ min }}
-    </div>
-    <div>
-      max: {{ max }}
-    </div>
-    <div>
-      avg: {{ avg }}
-    </div>
+      <div>
+        precio: {{ asset.priceUsd }}
+      </div>
+      <div>
+        min: {{ min }}
+      </div>
+      <div>
+        max: {{ max }}
+      </div>
+      <div>
+        avg: {{ avg }}
+      </div>
 
-    <line-chart :colors="['orange']" :min="min" :max="max" :data="history.map(h => [h.date , parseFloat(h.priceUsd).toFixed(2)])"/>
-
+      <line-chart :colors="['orange']" :min="min" :max="max"
+                  :data="history.map(h => [h.date , parseFloat(h.priceUsd).toFixed(2)])"/>
+    </div>
   </div>
 </template>
 
@@ -28,7 +30,7 @@ import api from "@/api"
 export default {
   name: 'Coin',
 
-  data () {
+  data() {
     return {
       asset: {},
       history: []
