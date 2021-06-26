@@ -37,16 +37,28 @@
     <div v-if="list.length === 0">
       No tienes nada en el carrito
     </div>
+
+    <a href="#" @click="addToCart(4)">Numero</a>
+
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'ShoppingList',
   props: {
       list: Array
   },
+  computed: {
+    ...mapGetters(['cart'])
+  },
   methods: {
+    ...mapActions([
+        "addToCart"
+    ]),
     deleteCourse(id) {
       this.$emit('deleteCourse', id);
     },
