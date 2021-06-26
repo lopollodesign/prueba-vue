@@ -1,6 +1,6 @@
 <template>
   <div class="carrito">
-    <header id="header" class="header">
+    <header id="header" class="header" style="position: sticky; z-index: 10; top: 0">
       <div class="container">
         <div class="row">
           <div class="four columns">
@@ -9,9 +9,9 @@
           <div class="two columns u-pull-right">
             <ul>
               <li class="submenu">
-                {{ this.addedList.length }}
+                {{ cart.length }}
                 <img src="../assets/cart.png" id="img-carrito">
-                <ShoppingList :list="this.addedList" @deleteCourse="deleteToList" @emptyCart="emptyCart"/>
+                <ShoppingList/>
               </li>
             </ul>
           </div>
@@ -55,7 +55,7 @@
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <CoursesList :list="list" @addCourse="addToList" @filtering="filterList"/>
+    <CoursesList :list="list" @filtering="filterList"/>
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -82,6 +82,7 @@
   </div>
 </template>
 <script>
+import { mapGetters} from 'vuex'
 import CoursesList from '@/components/CoursesList.vue'
 import ShoppingList from '@/components/ShoppingList.vue'
 
@@ -94,20 +95,19 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, imgSrc: "images/curso1.jpg", name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15},
-        { id: 2, imgSrc: "images/curso2.jpg", name:"Curso de Comida Vegetariana", price: 200, finalprice: 15},
-        { id: 3, imgSrc: "images/curso3.jpg", name:"Guitarra para Principiantes", price: 200, finalprice: 15},
-        { id: 4, imgSrc: "images/curso4.jpg", name:"Huerto en tu casa", price: 200, finalprice: 15},
-        { id: 5, imgSrc: "images/curso5.jpg", name:"Decoración con productos de tu hogar", price: 200, finalprice: 15},
-        { id: 6, imgSrc: "images/curso1.jpg", name:"Diseño Web para Principiantes", price: 200, finalprice: 15},
-        { id: 7, imgSrc: "images/curso2.jpg", name:"Comida Mexicana para principiantes", price: 200, finalprice: 15},
-        { id: 8, imgSrc: "images/curso3.jpg", name:"Estudio Musical en tu casa", price: 200, finalprice: 15},
-        { id: 9, imgSrc: "images/curso4.jpg", name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15},
-        { id: 10, imgSrc: "images/curso5.jpg", name:"Prepara galletas caseras", price: 200, finalprice: 15},
-        { id: 11, imgSrc: "images/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15},
-        { id: 12, imgSrc: "images/curso2.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15}
+        { id: 1, imgSrc: "images/curso1.jpg", name:"HTML5, CSS3, JavaScript para Principiantes", price: 200, finalprice: 15, amount: 1},
+        { id: 2, imgSrc: "images/curso2.jpg", name:"Curso de Comida Vegetariana", price: 200, finalprice: 15, amount: 1},
+        { id: 3, imgSrc: "images/curso3.jpg", name:"Guitarra para Principiantes", price: 200, finalprice: 15, amount: 1},
+        { id: 4, imgSrc: "images/curso4.jpg", name:"Huerto en tu casa", price: 200, finalprice: 15, amount: 1},
+        { id: 5, imgSrc: "images/curso5.jpg", name:"Decoración con productos de tu hogar", price: 200, finalprice: 15, amount: 1},
+        { id: 6, imgSrc: "images/curso1.jpg", name:"Diseño Web para Principiantes", price: 200, finalprice: 15, amount: 1},
+        { id: 7, imgSrc: "images/curso2.jpg", name:"Comida Mexicana para principiantes", price: 200, finalprice: 15, amount: 1},
+        { id: 8, imgSrc: "images/curso3.jpg", name:"Estudio Musical en tu casa", price: 200, finalprice: 15, amount: 1},
+        { id: 9, imgSrc: "images/curso4.jpg", name:"Cosecha tus propias frutas y verduras", price: 200, finalprice: 15, amount: 1},
+        { id: 10, imgSrc: "images/curso5.jpg", name:"Prepara galletas caseras", price: 200, finalprice: 15, amount: 1},
+        { id: 11, imgSrc: "images/curso1.jpg", name:"JavaScript Moderno con ES6", price: 200, finalprice: 15, amount: 1},
+        { id: 12, imgSrc: "images/curso2.jpg", name:"100 Recetas de Comida Natural", price: 200, finalprice: 15, amount: 1}
       ],
-      addedList: [],
       nameFilter: '',
     }
   },
@@ -117,32 +117,10 @@ export default {
         return this.nameFilter
       }
       return this.list.filter(course => course.name.includes(this.nameFilter))
-    }
+    },
+    ...mapGetters([ "cart" ])
   },
   methods: {
-    addToList(text, id, finalprice, imgSrc) {
-      if (this.addedList.some(cuorse => cuorse.id === id)) {
-        this.addedList = this.addedList.map(course => {
-          if (course.id === id) {
-            course.amount++
-            return course
-          }
-          return course
-        })
-      } else this.addedList.push({
-        id: id,
-        name: text,
-        finalprice: finalprice,
-        imgSrc: imgSrc,
-        amount: 1
-      })
-    },
-    deleteToList(id) {
-      this.addedList = this.addedList.filter(course => course.id !== id)
-    },
-    emptyCart() {
-      this.addedList = []
-    },
     filterList(text) {
       this.list = this.list.filter(course => course.name.includes(text))
     }
