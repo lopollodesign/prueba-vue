@@ -9,6 +9,9 @@
         ${{ course.price }}
         <span class="u-pull-right ">${{ course.finalprice }}</span>
       </p>
+      <a href="#" @click="goToDetail(course.id)" class="u-full-width button input detalles" style="margin-bottom: 0;">
+        Detalles del curso
+      </a>
       <a href="#" @click.prevent="addToCart(course)" class="u-full-width button-primary button input agregar-carrito" :data-id="course.id">
         Agregar Al Carrito
       </a>
@@ -26,6 +29,9 @@ export default {
   },
   methods: {
     ...mapActions([ "addToCart" ]),
+    goToDetail(id) {
+      this.$router.push({name: 'course', params: { id } })
+    }
   }
 }
 </script>
