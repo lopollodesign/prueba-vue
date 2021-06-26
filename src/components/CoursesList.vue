@@ -1,5 +1,10 @@
 <template>
   <div id="lista-cursos" class="container">
+
+    <input type="text" v-model="nameFilter">
+
+    {{ nameFilter }}
+
     <div class="lista-cursos_list">
       <CourseCard v-for="course in list" :key="course.id" :course="course" v-bind="$attrs"/>
     </div>
@@ -16,6 +21,16 @@ export default {
   },
   props: {
     list: Array,
+  },
+  data () {
+    return {
+      nameFilter: ''
+    }
+  },
+  watch: {
+    nameFilter() {
+      this.$emit('filtering', this.nameFilter)
+    }
   }
 }
 </script>

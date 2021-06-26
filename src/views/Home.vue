@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <div class="container">
+
+    <div v-if="!isLoading">
+      cargando
+    </div>
+
+    <div v-if="isLoading" class="container">
       <table style="width: 100%">
         <thead>
           <th></th>
@@ -9,6 +14,7 @@
           <th>Price Usd</th>
           <th>Market Cap Usd</th>
           <th>Change Percent 24Hr</th>
+          <th></th>
         </thead>
         <tbody style="font-size: 14px">
           <tr v-for="coin in assets" :key="coin.id">
@@ -19,7 +25,9 @@
               <b>#{{ coin.rank }}</b>
             </td>
             <td>
-              <b>{{ coin.name }}</b>
+              <router-link :to="{ name : 'coin', params: {id: coin.id } }">
+                <b>{{ coin.name }}</b>
+              </router-link>
             </td>
             <td>
               <b>{{ coin.priceUsd }}</b>
@@ -29,6 +37,9 @@
             </td>
             <td>
               <b>{{ coin.changePercent24Hr }}</b>
+            </td>
+            <td>
+              <UiButton @click="goToDetail(coin.id)">Detail</UiButton>
             </td>
           </tr>
         </tbody>
@@ -41,20 +52,28 @@
 <script>
 import api from '@/api';
 import HelloWorld from '@/components/HelloWorld.vue'
+import UiButton from '@/components/UiButton.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    UiButton
   },
   data () {
     return {
-      assets: []
+      assets: [],
+      isLoading: false
+    }
+  },
+  methods: {
+    goToDetail(id) {
+      this.$router.push({name: 'coin', params: { id } })
     }
   },
   created() {
-    api.getAssets()
-        .then(assets => (this.assets = assets))
+    this.isLoading = true
+    api.getAssets().then(assets => (this.assets = assets))
   }
 }
 </script>

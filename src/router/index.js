@@ -1,17 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Carrito from '../views/Carrito.vue'
+import Coin from '../views/Coin.vue'
 
 const routes = [
   {
-    path: '/Home',
+    path: '/',
+    alias: '/home',
     name: 'Home',
     component: Home
   },
   {
-    path: '/Carrito',
+    path: '/carrito',
     name: 'Carrito',
     component: Carrito
+  },
+  {
+    path: '/coin/:id',
+    name: 'coin',
+    component: Coin
   },
   {
     path: '/about',

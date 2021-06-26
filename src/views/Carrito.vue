@@ -55,7 +55,7 @@
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <CoursesList :list="list" @addCourse="addToList"/>
+    <CoursesList :list="list" @addCourse="addToList" @filtering="filterList"/>
 
     <footer id="footer" class="footer">
       <div class="container">
@@ -142,6 +142,9 @@ export default {
     },
     emptyCart() {
       this.addedList = []
+    },
+    filterList(text) {
+      this.list = this.list.filter(course => course.name.includes(text))
     }
   }
 }
