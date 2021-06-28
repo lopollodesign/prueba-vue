@@ -37,7 +37,7 @@
     </div>
     <h1 id="encabezado" class="encabezado">Cursos En Línea</h1>
 
-    <CoursesList :list="list" @filtering="filterList"/>
+    <CoursesList @filtering="filterList"/>
 
     <footer id="footer" class="footer">
       <div class="container">

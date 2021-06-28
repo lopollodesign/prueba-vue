@@ -1,37 +1,43 @@
 <template>
   <div class="course">
-    <div class="container">
-      <div class="container">
-        <h1>Course detail:</h1>
-      </div>
-      {{ $route.params.id }}
+    <div v-if="course" class="container">
+      <img :src="course.imgSrc" class="imagen-curso u-full-width" :alt="course.name">
+      <h1>{{ course.name }}</h1>
       <div>
-        {{ activeItem }}
+        <b>price:</b> {{ course.price }}
       </div>
       <div>
-        {{ course }}
+        <b>final price:</b> {{ course.finalprice }}
       </div>
+    </div>
+    <div v-else>
+      No hay curso
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Course',
 
   data() {
     return {
-      course: {}
+      course: {type: Object}
     }
   },
   computed: {
-    activeItem() {
-      return this.$store.state.list.find(c => c.id === 1)
+    ...mapGetters(['list']),
+  },
+  methods: {
+    getCourse(id) {
+      return this.list.find(c => c.id === id)
     }
   },
   created() {
-    this.course = this.$store.state.list.find(c => c.id === this.$route.params.id)
+    const id = Number.parseInt(this.$route.params.id, 10)
+    this.course = this.getCourse(id)
   }
 }
 </script>
