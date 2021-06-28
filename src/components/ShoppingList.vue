@@ -15,7 +15,7 @@
         <tbody>
         <tr v-for="item in cart" :key="item.id">
           <td>
-            <img :src="item.imgSrc" :alt="name" width="100">
+            <img :src="item.imgSrc" :alt="item.name" width="100">
           </td>
           <td>
             {{ item.name }}

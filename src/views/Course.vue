@@ -9,6 +9,11 @@
       <div>
         <b>final price:</b> {{ course.finalprice }}
       </div>
+      <div>
+        <a href="#" @click.prevent="addToCart(course)">
+          Añadir
+        </a>
+      </div>
     </div>
     <div v-else>
       No hay curso
@@ -17,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Course',
@@ -33,7 +38,8 @@ export default {
   methods: {
     getCourse(id) {
       return this.list.find(c => c.id === id)
-    }
+    },
+    ...mapActions(['addToCart'])
   },
   created() {
     const id = Number.parseInt(this.$route.params.id, 10)
