@@ -9,7 +9,10 @@
         ${{ course.price }}
         <span class="u-pull-right ">${{ course.finalprice }}</span>
       </p>
-      <a href="#" @click.prevent="addCourse()" class="u-full-width button-primary button input agregar-carrito" :data-id="course.id">
+      <a href="#" @click="goToDetail(course.id)" class="u-full-width button input detalles" style="margin-bottom: 0;">
+        Detalles del curso
+      </a>
+      <a href="#" @click.prevent="addToCart(course)" class="u-full-width button-primary button input agregar-carrito" :data-id="course.id">
         Agregar Al Carrito
       </a>
     </div>
@@ -17,15 +20,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'CurseCard',
   props: {
     course: { type: Object, required: true },
   },
   methods: {
-    addCourse() {
-      this.$emit('addCourse', this.course.name, this.course.id, this.course.finalprice, this.course.imgSrc);
-    },
+    ...mapActions([ "addToCart" ]),
+    goToDetail(id) {
+      this.$router.push({name: 'course', params: { id } })
+    }
   }
 }
 </script>

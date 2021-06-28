@@ -1,17 +1,15 @@
 <template>
   <div id="lista-cursos" class="container">
-
     <input type="text" v-model="nameFilter">
-
     {{ nameFilter }}
-
     <div class="lista-cursos_list">
-      <CourseCard v-for="course in list" :key="course.id" :course="course" v-bind="$attrs"/>
+      <CourseCard v-for="course in list" :key="course.id" :course="course"/>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CourseCard from '@/components/CourseCard.vue'
 
 export default {
@@ -19,8 +17,8 @@ export default {
   components: {
     CourseCard,
   },
-  props: {
-    list: Array,
+  computed: {
+    ...mapGetters([ 'list' ])
   },
   data () {
     return {

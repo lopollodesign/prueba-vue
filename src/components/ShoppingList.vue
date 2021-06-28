@@ -1,7 +1,7 @@
 <template>
   <div id="carrito">
 
-    <div v-if="list.length > 0">
+    <div v-if="cart.length > 0">
       <table id="lista-carrito" class="u-full-width">
         <thead>
         <tr>
@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="item in list" :key="item.id">
+        <tr v-for="item in cart" :key="item.id">
           <td>
             <img :src="item.imgSrc" :alt="name" width="100">
           </td>
@@ -27,32 +27,32 @@
             {{ item.amount }}
           </td>
           <td>
-            <a href="#" @click.prevent="deleteCourse(item.id)" class="borrar-curso">X</a>
+            <a href="#" @click.prevent="deleteFromCart(item.id)" class="borrar-curso">X</a>
           </td>
         </tr>
         </tbody>
       </table>
       <a href="#" id="vaciar-carrito" @click.prevent="emptyCart" class="button u-full-width">Vaciar Carrito</a>
     </div>
-    <div v-if="list.length === 0">
+    <div v-if="cart.length === 0">
       No tienes nada en el carrito
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'ShoppingList',
-  props: {
-      list: Array
+  computed: {
+    ...mapGetters(['cart'])
   },
   methods: {
-    deleteCourse(id) {
-      this.$emit('deleteCourse', id);
-    },
-    emptyCart() {
-      this.$emit('emptyCart');
-    },
+    ...mapActions([
+        "emptyCart",
+        "deleteFromCart"
+    ])
   }
 }
 </script>
