@@ -13,6 +13,9 @@
         <a href="#" @click.prevent="addToCart(course)">
           Añadir
         </a>
+        <a href="#" @click.prevent="deleteFromCart(course.id)" v-if="addedToCart">
+          Eliminar
+        </a>
       </div>
     </div>
     <div v-else>
@@ -33,13 +36,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['list']),
+    ...mapGetters(['list', 'cart']),
+    addedToCart() {
+      return this.cart.some(c => c.id === this.course.id)
+    }
   },
   methods: {
     getCourse(id) {
       return this.list.find(c => c.id === id)
     },
-    ...mapActions(['addToCart'])
+    ...mapActions(['addToCart', 'deleteFromCart'])
   },
   created() {
     const id = Number.parseInt(this.$route.params.id, 10)
