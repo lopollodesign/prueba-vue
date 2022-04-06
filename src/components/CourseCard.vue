@@ -1,22 +1,24 @@
-<template>
-  <div class="card">
-    <img :src="course.imgSrc" class="imagen-curso u-full-width" :alt="course.name">
-    <div class="info-card">
-      <h4>{{ course.name }}</h4>
-      <p>Juan Pedro</p>
-      <img src="../assets/estrellas.png">
-      <p class="precio">
-        ${{ course.price }}
-        <span class="u-pull-right ">${{ course.finalprice }}</span>
-      </p>
-      <a href="#" @click="goToDetail(course.id)" class="u-full-width button input detalles" style="margin-bottom: 0;">
-        Detalles del curso
-      </a>
-      <a href="#" @click.prevent="addToCart(course)" class="u-full-width button-primary button input agregar-carrito" :data-id="course.id">
-        Agregar Al Carrito
-      </a>
-    </div>
-  </div>
+<template lang="pug">
+.card
+  img.imagen-curso.u-full-width(
+    :src="course.imgSrc"
+    :alt="course.name")
+  .info-card
+    h4 {{ course.name }}
+    p pedro juan
+    img(src="../assets/estrellas.png")
+    .precio ${{ course.price }}
+    span.u-pull-right ${{ course.finalprice }}
+    a.u-full-width.button.input.detalles(
+      href="#"
+      @click="goToDetail(course.id)"
+      style="margin-bottom: 0;"
+      ) Detalles del curso
+    a.u-full-width.button-primary.button.input.agregar-carrito(
+      href="#"
+      @click.prevent="addToCart(course)"
+      :data-id="course.id"
+    ) Agregar Al Carrito
 </template>
 
 <script>

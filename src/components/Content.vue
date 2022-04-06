@@ -1,10 +1,8 @@
-<template>
-  <div class="content">
-    <div>
-      <slot name="title"></slot>  
-    </div>
-    <slot></slot>
-  </div>
+<template lang='pug'>
+.content
+  div
+    slot(name="title")
+  slot
 </template>
 
 <script>

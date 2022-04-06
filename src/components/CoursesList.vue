@@ -1,11 +1,11 @@
-<template>
-  <div id="lista-cursos" class="container">
-    <input type="text" v-model="nameFilter">
-    {{ nameFilter }}
-    <div class="lista-cursos_list">
-      <CourseCard v-for="course in list" :key="course.id" :course="course"/>
-    </div>
-  </div>
+<template lang='pug'>
+#lista-cursos.container
+  input(type="text" v-model="nameFilter")
+  input(type="text" v-model="newFilter")
+  div {{ nameFilter }}
+  div {{ newFilter }}
+  .lista-cursos_list
+    CourseCard(v-for="course in list" :key="course.id" :course="course")
 </template>
 
 <script>
@@ -22,7 +22,8 @@ export default {
   },
   data () {
     return {
-      nameFilter: ''
+      nameFilter: 'hello',
+      newFilter: ''
     }
   },
   watch: {
